@@ -7,10 +7,11 @@ class Aplicacao(Frame):
 		Frame.__init__(self, master)
 		self.msg = Label(self, text="Hello")
 		self.msg.pack ()
+		self.pack()
 
 
 app = Aplicacao()
 app.master.title('Chat Online')
-app.master.geometry('650x300+200+200')
+app.master.geometry('650x250+200+200')
 mainloop()
 

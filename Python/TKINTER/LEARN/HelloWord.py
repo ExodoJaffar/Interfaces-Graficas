@@ -12,3 +12,8 @@ class Aplicacao(Frame):
 		self.bye = Button(self, text='Bye', command=self.quit)
 		self.bye.pack()
 		self.pack()
+
+app = Aplicacao()
+app.master.title('Hello World')
+app.master.geometry('650x250+200+200')
+mainloop()
