@@ -1,19 +1,11 @@
 #-*-coding=utf8
 #py:3.6
+#tkinter:8.6.6
 
 from tkinter import *
+from tkinter import ttk 
 
-class Aplicacao(Frame):
-	"""docstring for Aplicacao"""
-	def __init__(self, master=None):
-		Frame.__init__(self, master)
-		self.msg = Label(self, text="Hello World!")
-		self.msg.pack()
-		self.bye = Button(self, text='Bye', command=self.quit)
-		self.bye.pack()
-		self.pack()
+root = Tk()
 
-app = Aplicacao()
-app.master.title('Hello World')
-app.master.geometry('650x250+200+200')
-mainloop()
+ttk.Button(root, text="Hello world!").grid()
+root.mainloop()
