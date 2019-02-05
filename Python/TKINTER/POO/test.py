@@ -1,5 +1,7 @@
 #-*-coding:utf8;-*-
 #py:3.6
+#tkinter:8.6.6
+
 from tkinter import *
 
 class Aplicacao(Frame):
