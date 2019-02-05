@@ -3,14 +3,22 @@
 #tkinter:8.6.6
 
 from tkinter import *
+from tkinter import ttk
 
 root = Tk()
-write = StringVar(root)
-log = Text(root, state='disabled', width=80, height=24, wrap='none')
-log.grid()
+root.title("Chat Online")
+mainframe = ttk.Frame(root, padding='3 3 12 12')
+mainframe.grid(column=0, row=0, sticky=(N, W , E , S))
+mainframe.columnconfigure(0, weight=1)
+mainframe.rowconfigure(0, weight=1)
 
-b = Button(log, text='Push Me')
-log.window_create('1.0', window=b)
+write = StringVar()
+
+log = Text(mainframe, state='disabled', width=80, height=24, wrap='none')
+log.grid(column=1, row=1)
+
+#b = Button(log, text='Push Me')
+#log.window_create('1.0', window=b)
 
 def writeToLog(e):
 	numlines = log.index('end - 1 line').split('.')[0]
@@ -22,9 +30,9 @@ def writeToLog(e):
 	log.insert('end', write.get())
 	log['state'] = 'disabled'
 
-botao = Entry(root, textvar=write)
-botao.bind('<Return>', writeToLog)
-botao.grid()
+entrada = ttk.Entry(mainframe, width=107, textvar=write)
+entrada.bind('<Return>', writeToLog)
+entrada.grid(column=1, sticky=W)
 
 mainloop()
 
