@@ -2,9 +2,14 @@
 #py:3.6
 
 from tkinter import *
+from tkinter import ttk
 
-a = Button(text='Exit',command=quit)
-a.pack()
+# Criando widget principal :
+root = Tk()
 
-mainloop()
+# Criando botao para sair : 
+ttk.Button(root, text='Exit',command=quit).pack()
+
+# Iniciando widget principal
+root.mainloop()
 
