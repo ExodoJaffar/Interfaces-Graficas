@@ -14,7 +14,6 @@ while True:
 	        msg = con.recv(1024)
 	        if not msg: break
 	       	a = "{} : {}".format(cliente ,str(msg).replace('b',''))
-	       	print(a)
 	       	txt.write(f'{a}\n')
     print ('Finalizando conexao do cliente', cliente)
     con.close()
