@@ -5,6 +5,8 @@
 from tkinter import *
 from tkinter import ttk
 
+#txt = open('database.txt','r+')
+
 root = Tk()
 root.title("Chat Online")
 mainframe = ttk.Frame(root, padding='3 3 12 12')
@@ -21,6 +23,7 @@ log.grid(column=1, row=1)
 #log.window_create('1.0', window=b)
 
 def writeToLog(e):
+	#txt.write(f'{write.get()}\n')
 	numlines = log.index('end - 1 line').split('.')[0]
 	log['state'] = 'normal'
 	if numlines == 24:
@@ -35,4 +38,6 @@ entrada.bind('<Return>', writeToLog)
 entrada.grid(column=1, sticky=W)
 
 mainloop()
+
+#txt.close()
 

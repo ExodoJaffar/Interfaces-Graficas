@@ -9,13 +9,18 @@ def enviar(e):
 
 
 root = Tk()
+
 texto = StringVar(root)
 textoEnviar = StringVar(root)
-textChat = Label(textvar=texto)
+
+textChat = Label(root, textvar=texto)
+textChat.grid()
+
 entrada = Entry(root,width = 100, textvar=textoEnviar)
 entrada.bind("<Return>", enviar)
-textChat.grid()
 entrada.grid(column=4,row=1)
+
 root.geometry('600x250+100+100')
+
 mainloop()
 
