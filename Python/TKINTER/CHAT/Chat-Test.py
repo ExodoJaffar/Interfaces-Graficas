@@ -3,6 +3,7 @@
 #tkinter:8.6.6
 
 from tkinter import *
+from tkinter import ttk
 
 def enviar(e):
 	texto.set(textoEnviar.get())
@@ -13,10 +14,10 @@ root = Tk()
 texto = StringVar(root)
 textoEnviar = StringVar(root)
 
-textChat = Label(root, textvar=texto)
+textChat = ttk.Label(root, textvar=texto)
 textChat.grid()
 
-entrada = Entry(root,width = 100, textvar=textoEnviar)
+entrada = ttk.Entry(root,width = 100, textvar=textoEnviar)
 entrada.bind("<Return>", enviar)
 entrada.grid(column=4,row=1)
 
