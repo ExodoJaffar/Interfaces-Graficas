@@ -1,19 +1,46 @@
-import socket
-HOST = ''              # Endereco IP do Servidor
-PORT = 5002            # Porta que o Servidor esta
-tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-orig = (HOST, PORT)
-tcp.bind(orig)
-tcp.listen(1)
+try:
+	import socket
+except Exception as e:
+	print(e)
+tcp = None
+con = None
 
-while True:
-    con, cliente = tcp.accept()
-    print ('Conectado por', cliente)
-    with open('database.txt', 'r+') as txt:
-	    while True:
-	        msg = con.recv(1024)
-	        if not msg: break
-	       	a = "{} : {}".format(cliente ,str(msg).replace('b',''))
-	       	txt.write(f'{a}\n')
-    print ('Finalizando conexao do cliente', cliente)
-    con.close()
+def StartServer(origem:tuple):
+	global tcp
+
+	tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	tcp.bind(origem)
+	tcp.listen(1)
+
+def GetMsg():
+	msg = con.recv(1024)
+
+	return str(msg).split("'")[1]
+
+def WriteChat():
+	with open('chat.txt', 'r+') as txt:
+		while True:
+			msg = GetMsg()
+			if msg == '': break
+			txt.write(f'{msg}\n')
+
+def ConnectClient():
+	global tcp
+	global con
+
+	con, cliente = tcp.accept()
+
+	#return cliente
+
+def CloseClient():
+	con.close()
+
+if __name__ == '__main__':
+	HOST = ''              # Endereco IP do Servidor
+	PORT = 5002            # Porta que o Servidor esta
+	orig = (HOST,PORT)
+	StartServer(orig)
+	while True:
+		ConnectClient()
+		WriteChat()
+	CloseClient()
