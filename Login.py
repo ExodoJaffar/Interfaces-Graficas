@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from time import sleep
-from Json import *
+from MysqlConnect import *
 
 def Verificar(e=None):
 	json = readJson()['Contas']
